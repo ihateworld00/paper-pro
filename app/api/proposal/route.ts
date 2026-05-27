@@ -50,12 +50,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(result, { status: 500 });
     }
 
-    const data = result.data as Record<string, unknown>;
+    const proposalData = result.data as unknown as Parameters<typeof generateProposalDocx>[0];
 
     // Word 文档下载（HTML格式，Word/WPS完美打开）
     if (format === "docx") {
-      const buf = generateProposalDocx(data as Parameters<typeof generateProposalDocx>[0]);
-      return new NextResponse(buf, {
+      const buf = generateProposalDocx(proposalData);
+      return new NextResponse(new Uint8Array(buf), {
         headers: {
           "Content-Type": "application/msword",
           "Content-Disposition": "attachment; filename=proposal.doc",
@@ -65,7 +65,8 @@ export async function POST(req: NextRequest) {
 
     // HTML 预览/PDF打印
     if (format === "html") {
-      return new NextResponse(generateProposalHtml(data as Parameters<typeof generateProposalHtml>[0]), {
+      const html = generateProposalHtml(proposalData);
+      return new NextResponse(html, {
         headers: { "Content-Type": "text/html; charset=utf-8" },
       });
     }
@@ -73,7 +74,7 @@ export async function POST(req: NextRequest) {
     // 默认 JSON + HTML
     return NextResponse.json({
       ...result,
-      html: generateProposalHtml(data as Parameters<typeof generateProposalHtml>[0]),
+      html: generateProposalHtml(proposalData),
     });
   } catch (err) {
     return NextResponse.json({ success: false, error: err instanceof Error ? err.message : "服务器错误" }, { status: 500 });

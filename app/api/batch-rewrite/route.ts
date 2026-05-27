@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
 
     // 4. 默认返回 Word 文档
     const docxBuffer = generateMarkedDocx(fullText, rewritten, title);
-    return new NextResponse(docxBuffer, {
+    return new NextResponse(new Uint8Array(docxBuffer), {
       headers: {
         "Content-Type": "application/msword",
         "Content-Disposition": "attachment; filename=rewrite_report.doc",

@@ -12,7 +12,8 @@ export async function extractDocxText(buffer: Buffer): Promise<string> {
 
 /** 从 PDF 文件中提取文本 */
 export async function extractPdfText(buffer: Buffer): Promise<string> {
-  const pdf = new pdfParseMod.PDFParse(new Uint8Array(buffer));
+  const PDF = pdfParseMod.PDFParse as unknown as new (buf: Uint8Array) => { load: () => Promise<void>; getText: () => Promise<{ text: string }> };
+  const pdf = new PDF(new Uint8Array(buffer));
   await pdf.load();
   const result = await pdf.getText();
   return result.text || "";

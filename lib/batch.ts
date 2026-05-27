@@ -5,7 +5,7 @@ import { paraphrase } from "./ai";
 export interface FlaggedSection {
   index: number;
   text: string;
-  type: "plagiarism" | "ai_rate" | "both";
+  type: "plagiarism" | "ai_rate" | "dual";
   score: number;        // 百分比 0-100
   rewritten?: string;
 }
@@ -36,7 +36,7 @@ export function parseReport(rawText: string): { sections: FlaggedSection[]; full
       const score = parseInt((pctMatch || aiMatch)![1], 10);
       if (score < 20) continue; // 低于20% 不处理
 
-      let type: FlaggedSection["type"] = "both";
+      let type: FlaggedSection["type"] = "dual";
       if (pctMatch && !aiMatch) type = "plagiarism";
       else if (aiMatch && !pctMatch) type = "ai_rate";
 
@@ -55,7 +55,7 @@ export function parseReport(rawText: string): { sections: FlaggedSection[]; full
       const score = parseInt(anyPct[1], 10);
       let text = block.replace(/\d{1,3}[%％]/, "").trim();
       if (text.length >= 20) {
-        sections.push({ index: i, text, type: "both", score });
+        sections.push({ index: i, text, type: "dual", score });
       }
     }
   }
