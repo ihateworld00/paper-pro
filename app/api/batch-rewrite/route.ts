@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { NextRequest, NextResponse } from "next/server";
 import { parseReport, parsePdfReport, batchRewrite, generateMarkedDocx } from "@/lib/batch";
 import { extractDocxText } from "@/lib/document";

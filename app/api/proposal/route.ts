@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { NextRequest, NextResponse } from "next/server";
 import { generateProposal } from "@/lib/ai";
 import { extractDocxText, extractPdfText, generateProposalDocx, generateProposalHtml } from "@/lib/document";
