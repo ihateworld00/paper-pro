@@ -1,0 +1,29 @@
+[
+  {
+    "id": "PP26052523347MIJ",
+    "plan": "single",
+    "amount": 9.9,
+    "status": "paid",
+    "transactionId": "",
+    "activationCode": "PAPER-A9BD6F-835CD2",
+    "createdAt": "2026-05-25T15:34:23.998Z"
+  },
+  {
+    "id": "PP2605252334MQBP",
+    "plan": "single",
+    "amount": 9.9,
+    "status": "paid",
+    "transactionId": "4200001234567890",
+    "activationCode": "PAPER-DBC122-51FC0D",
+    "createdAt": "2026-05-25T15:34:24.115Z"
+  },
+  {
+    "id": "PP2605261104S84U",
+    "plan": "single",
+    "amount": 9.9,
+    "status": "pending",
+    "transactionId": "",
+    "activationCode": null,
+    "createdAt": "2026-05-26T03:04:22.193Z"
+  }
+]

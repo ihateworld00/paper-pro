@@ -20,7 +20,21 @@ export function saveUsage(u: Usage) {
   localStorage.setItem(KEY, JSON.stringify(u));
 }
 
+/** 检查登录用户的VIP状态 */
+function isVipFromLogin(): boolean {
+  try {
+    const raw = localStorage.getItem("auth_user");
+    if (!raw) return false;
+    const user = JSON.parse(raw);
+    if (user.vipExpire && new Date(user.vipExpire) > new Date()) return true;
+  } catch {}
+  return false;
+}
+
 export function useOnce(): boolean {
+  // 登录用户VIP → 无限使用
+  if (isVipFromLogin()) return true;
+
   const u = getUsage();
   if (u.activated && u.expireDate && new Date(u.expireDate) > new Date()) return true;
   if (u.freeUsed < u.maxFree) {
@@ -32,6 +46,7 @@ export function useOnce(): boolean {
 }
 
 export function remaining(): number {
+  if (isVipFromLogin()) return 999;
   const u = getUsage();
   if (u.activated && u.expireDate && new Date(u.expireDate) > new Date()) return 999;
   return Math.max(0, u.maxFree - u.freeUsed);

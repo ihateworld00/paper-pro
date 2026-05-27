@@ -1,0 +1,26 @@
+[
+  {
+    "id": "9ceb874b-70f8-4bbc-b004-270237f6ca80",
+    "email": "test@example.com",
+    "phone": "",
+    "password": "d7d731e3cb9b225f9fd55b042eacb59bd49b8dd92702140b439a580aee091f3a",
+    "salt": "d970145998397658a8012183284fa43b",
+    "name": "�����û�",
+    "avatar": "",
+    "createdAt": "2026-05-27T04:06:17.777Z",
+    "vipExpire": null,
+    "freeUsed": 0
+  },
+  {
+    "id": "b115924c-8b23-44f9-8932-e2fcf001710a",
+    "email": "2765245058@qq.com",
+    "phone": "",
+    "password": "246c046199e6ecbd54bd47ea2b0acbc0e2a4a66cbfd1704084a6f9d7c6c38a0e",
+    "salt": "48635375cca78924991d61c3a78211f5",
+    "name": "2765245058@qq.com",
+    "avatar": "",
+    "createdAt": "2026-05-27T04:11:48.963Z",
+    "vipExpire": "2026-06-27T04:11:48.963Z",
+    "freeUsed": 0
+  }
+]
