@@ -1,2 +1,7 @@
+pages_build_output_dir = ".vercel/output/static"
 compatibility_flags = ["nodejs_compat"]
 compatibility_date = "2025-01-01"
+
+[vars]
+DEEPSEEK_API_KEY = "sk-4c4aa62eac3c4b7690a15f55e86e9f51"
+ADMIN_PASSWORD = "paper2026"
